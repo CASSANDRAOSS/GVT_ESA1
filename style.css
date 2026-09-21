@@ -803,11 +803,12 @@ code {
 .seitenkopf .profilbild {
     position: absolute;
     right: 35px;
-    bottom: -78px;
+    bottom: -40px;
+    z-index: 5;
 
     display: block;
 
-    width: 174px;
+    width: 155px;
     max-width: none;
     height: auto;
 
