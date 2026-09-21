@@ -373,3 +373,213 @@ bilderVorladen(
 // Den richtigen Anfangszustand anzeigen.
 scheibenbildAnzeigen();
 pinguinbildAnzeigen(0);
+
+// --------------------------------------------------
+// SLIDESHOW ZUM ENTSTEHUNGSPROZESS
+// --------------------------------------------------
+
+// Bilder und Texte der einzelnen Entwicklungsschritte
+const entwicklungsschritte = [
+    {
+        bild: "bilder/entwicklung/schritt_01.png",
+        alt: "Erster Entwurf der Scheibe mit den farbigen Grundringen",
+        titel: "Die farbliche Grundform",
+        beschreibung:
+            "Am Anfang bestand die Scheibe nur aus mehreren verschiedenfarbigen Ringen."
+    },
+    {
+        bild: "bilder/entwicklung/schritt_02.png",
+        alt: "Zweiter Entwurf der Scheibe mit einer Kompassrose",
+        titel: "Die Kompassrose entsteht",
+        beschreibung:
+            "Anschließend habe ich die beiden Sterne der Kompassrose in die Mitte der Scheibe gesetzt."
+    },
+    {
+        bild: "bilder/entwicklung/schritt_03.png",
+        alt: "Fertig gestaltete maritime Scheibe mit allen Details",
+        titel: "Die fertige Scheibengrafik",
+        beschreibung:
+            "Mittelpunkt, orangefarbene Spitze und kleine Schmuckkreise vervollständigen das maritime Motiv."
+    },
+    {
+        bild: "bilder/entwicklung/schritt_04.png",
+        alt: "Erste Version der Webseite mit steuerbarer Scheibenanimation",
+        titel: "Die erste Animation",
+        beschreibung:
+            "Aus den gedrehten Einzelbildern entstand zunächst die mit Buttons und Tastatur steuerbare Scheibenanimation."
+    },
+    {
+        bild: "bilder/entwicklung/schritt_05.png",
+        alt: "Fertige Webseite mit Scheibe und Pinguinanimation",
+        titel: "Die fertige Webseite",
+        beschreibung:
+            "Zum Schluss kamen Cassys Sprunganimation, die automatische Drehung und die vollständige Dokumentation hinzu."
+    }
+];
+
+
+// Benötigte Elemente aus der HTML-Seite auswählen
+const slideshow =
+    document.getElementById("slideshow");
+
+const slideshowBild =
+    document.getElementById("slideshowBild");
+
+const bildZaehler =
+    document.getElementById("bildZaehler");
+
+const bildTitel =
+    document.getElementById("bildTitel");
+
+const bildBeschreibung =
+    document.getElementById("bildBeschreibung");
+
+const zurueckButton =
+    document.getElementById("zurueckButton");
+
+const weiterButton =
+    document.getElementById("weiterButton");
+
+const bildpunkte =
+    document.getElementById("bildpunkte");
+
+
+// Zu Beginn wird der erste Entwicklungsschritt angezeigt
+let aktuellerEntwicklungsschritt = 0;
+
+
+// Erzeugt die kleinen Punkte für die Bildanzeige
+function bildpunkteErstellen() {
+
+    for (
+        let nummer = 0;
+        nummer < entwicklungsschritte.length;
+        nummer++
+    ) {
+
+        const punkt =
+            document.createElement("span");
+
+        punkt.classList.add("bildpunkt");
+
+        bildpunkte.appendChild(punkt);
+    }
+}
+
+
+// Zeigt das ausgewählte Bild und den passenden Text an
+function entwicklungsschrittAnzeigen() {
+
+    const schritt =
+        entwicklungsschritte[
+            aktuellerEntwicklungsschritt
+        ];
+
+    slideshowBild.src =
+        schritt.bild;
+
+    slideshowBild.alt =
+        schritt.alt;
+
+    bildZaehler.textContent =
+        "Bild " +
+        (aktuellerEntwicklungsschritt + 1) +
+        " von " +
+        entwicklungsschritte.length;
+
+    bildTitel.textContent =
+        schritt.titel;
+
+    bildBeschreibung.textContent =
+        schritt.beschreibung;
+
+
+    // Den Punkt des aktuellen Bildes hervorheben
+    const punkte =
+        bildpunkte.querySelectorAll(".bildpunkt");
+
+    for (
+        let nummer = 0;
+        nummer < punkte.length;
+        nummer++
+    ) {
+
+        punkte[nummer].classList.toggle(
+            "aktiv",
+            nummer === aktuellerEntwicklungsschritt
+        );
+    }
+}
+
+
+// Zeigt das vorherige Bild an
+function vorherigesEntwicklungsbild() {
+
+    aktuellerEntwicklungsschritt--;
+
+    // Vom ersten Bild zum letzten Bild wechseln
+    if (aktuellerEntwicklungsschritt < 0) {
+
+        aktuellerEntwicklungsschritt =
+            entwicklungsschritte.length - 1;
+    }
+
+    entwicklungsschrittAnzeigen();
+}
+
+
+// Zeigt das nächste Bild an
+function naechstesEntwicklungsbild() {
+
+    aktuellerEntwicklungsschritt++;
+
+    // Vom letzten Bild wieder zum ersten wechseln
+    if (
+        aktuellerEntwicklungsschritt >=
+        entwicklungsschritte.length
+    ) {
+
+        aktuellerEntwicklungsschritt = 0;
+    }
+
+    entwicklungsschrittAnzeigen();
+}
+
+
+// Mausklicks auf die Buttons verarbeiten
+zurueckButton.addEventListener(
+    "click",
+    vorherigesEntwicklungsbild
+);
+
+weiterButton.addEventListener(
+    "click",
+    naechstesEntwicklungsbild
+);
+
+
+// Bedienung mit den Pfeiltasten
+slideshow.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "ArrowLeft") {
+
+            event.preventDefault();
+
+            vorherigesEntwicklungsbild();
+        }
+
+        if (event.key === "ArrowRight") {
+
+            event.preventDefault();
+
+            naechstesEntwicklungsbild();
+        }
+    }
+);
+
+
+// Slideshow vorbereiten
+bildpunkteErstellen();
+entwicklungsschrittAnzeigen();
