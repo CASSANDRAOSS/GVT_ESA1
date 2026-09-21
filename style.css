@@ -1,0 +1,790 @@
+/* --------------------------------------------------
+   Grundfarben der Webseite
+-------------------------------------------------- */
+
+:root {
+    --dunkelblau: #123b5d;
+    --dunkelblau-hell: #1c567d;
+    --tuerkis: #2e9e9a;
+    --tuerkis-hell: #dff3f1;
+    --creme: #f4e7c5;
+    --creme-hell: #fffaf0;
+    --orange: #f28c28;
+    --orange-dunkel: #c96008;
+    --schrift: #172430;
+    --weiss: #ffffff;
+    --grau: #64717c;
+    --rand: #d9e0e4;
+
+    --schatten:
+        0 18px 45px rgba(18, 59, 93, 0.14);
+}
+
+
+/* --------------------------------------------------
+   Allgemeine Einstellungen
+-------------------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    color: var(--schrift);
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(46, 158, 154, 0.13),
+            transparent 35%
+        ),
+        linear-gradient(
+            180deg,
+            #f8fbfc 0%,
+            #fffaf0 100%
+        );
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+
+/* --------------------------------------------------
+   Sprunglink für Tastaturnutzende
+-------------------------------------------------- */
+
+.sprunglink {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 100;
+
+    padding: 12px 18px;
+
+    color: var(--weiss);
+    background-color: var(--dunkelblau);
+
+    border-radius: 10px;
+
+    font-weight: bold;
+    text-decoration: none;
+
+    transform: translateY(-150%);
+    transition: transform 0.2s ease;
+}
+
+.sprunglink:focus {
+    transform: translateY(0);
+}
+
+
+/* --------------------------------------------------
+   Kopfbereich
+-------------------------------------------------- */
+
+.seitenkopf {
+    position: relative;
+    overflow: hidden;
+
+    padding: 80px 24px 100px;
+
+    color: var(--weiss);
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(46, 158, 154, 0.65),
+            transparent 28%
+        ),
+        linear-gradient(
+            135deg,
+            #0c2d46,
+            var(--dunkelblau)
+        );
+}
+
+.seitenkopf::after {
+    position: absolute;
+    right: -120px;
+    bottom: -230px;
+
+    width: 500px;
+    height: 500px;
+
+    content: "";
+
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+}
+
+.kopfbereich {
+    position: relative;
+    z-index: 1;
+
+    width: min(1120px, 100%);
+    margin: 0 auto;
+}
+
+.aufgabenbezeichnung {
+    margin: 0 0 12px;
+
+    color: var(--orange);
+
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.seitenkopf h1 {
+    max-width: 850px;
+    margin: 0;
+
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+}
+
+.einleitung {
+    max-width: 760px;
+    margin: 26px 0 0;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+}
+
+.kurzinformationen {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin: 30px 0 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.kurzinformationen li {
+    padding: 8px 14px;
+
+    color: var(--weiss);
+    background-color: rgba(255, 255, 255, 0.1);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 999px;
+
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+
+/* --------------------------------------------------
+   Hauptinhalt
+-------------------------------------------------- */
+
+main {
+    width: min(1180px, calc(100% - 32px));
+    margin: -48px auto 70px;
+}
+
+
+/* --------------------------------------------------
+   Raster mit den beiden Animationskarten
+-------------------------------------------------- */
+
+.animationsbereich {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 26px;
+}
+
+
+/* --------------------------------------------------
+   Allgemeine Gestaltung der Animationskarten
+-------------------------------------------------- */
+
+.animationskarte {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    padding: 34px;
+
+    background-color: var(--weiss);
+
+    border: 1px solid rgba(18, 59, 93, 0.12);
+    border-radius: 26px;
+
+    box-shadow: var(--schatten);
+}
+
+.scheibenkarte {
+    border-top: 7px solid var(--tuerkis);
+}
+
+.pinguinkarte {
+    border-top: 7px solid var(--orange);
+}
+
+.kartennummer {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+
+    color: rgba(18, 59, 93, 0.09);
+
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.kartenkopf {
+    position: relative;
+    z-index: 1;
+
+    min-height: 175px;
+    padding-right: 58px;
+}
+
+.kartenkategorie {
+    margin: 0 0 8px;
+
+    color: var(--tuerkis);
+
+    font-size: 0.78rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.pinguinkarte .kartenkategorie {
+    color: var(--orange-dunkel);
+}
+
+.kartenkopf h2 {
+    margin: 0 0 15px;
+
+    color: var(--dunkelblau);
+
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.1;
+}
+
+.kartenkopf p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* --------------------------------------------------
+   Bildbereiche
+-------------------------------------------------- */
+
+.bildbereich {
+    display: grid;
+    place-items: center;
+
+    width: 100%;
+    height: 430px;
+    margin: 25px 0 20px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+}
+
+.scheibenbereich {
+    background:
+        radial-gradient(
+            circle,
+            var(--weiss) 0%,
+            var(--tuerkis-hell) 70%,
+            #c7e8e5 100%
+        );
+}
+
+.pinguinbereich {
+    background:
+        linear-gradient(
+            180deg,
+            #efe3d7 0%,
+            #e5d1bd 100%
+        );
+}
+
+#scheibe {
+    width: min(90%, 390px);
+    max-height: 390px;
+    height: auto;
+
+    filter:
+        drop-shadow(
+            0 16px 14px
+            rgba(18, 59, 93, 0.2)
+        );
+}
+
+#pinguin {
+    width: auto;
+    max-width: 100%;
+    max-height: 410px;
+    height: auto;
+}
+
+
+/* --------------------------------------------------
+   Statusanzeigen
+-------------------------------------------------- */
+
+.statusanzeige {
+    align-self: center;
+
+    margin: 0 0 22px;
+    padding: 8px 16px;
+
+    color: var(--dunkelblau);
+    background-color: var(--tuerkis-hell);
+
+    border: 1px solid rgba(46, 158, 154, 0.35);
+    border-radius: 999px;
+
+    font-size: 0.92rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pinguinkarte .statusanzeige {
+    color: #713b0d;
+    background-color: #fff0df;
+
+    border-color: rgba(242, 140, 40, 0.4);
+}
+
+
+/* --------------------------------------------------
+   Steuerungsbereiche
+-------------------------------------------------- */
+
+.steuerung {
+    display: grid;
+    gap: 12px;
+
+    width: 100%;
+}
+
+.scheibensteuerung {
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1.35fr)
+        minmax(0, 1fr);
+}
+
+.pinguinsteuerung {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+
+/* --------------------------------------------------
+   Buttons
+-------------------------------------------------- */
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 56px;
+    padding: 12px 14px;
+
+    color: var(--dunkelblau);
+    background-color: var(--weiss);
+
+    border: 2px solid var(--dunkelblau);
+    border-radius: 13px;
+
+    box-shadow: 4px 4px 0 var(--dunkelblau);
+
+    font-weight: bold;
+    line-height: 1.2;
+
+    cursor: pointer;
+
+    transition:
+        color 0.15s ease,
+        background-color 0.15s ease,
+        box-shadow 0.15s ease,
+        transform 0.15s ease;
+}
+
+.button:hover {
+    color: var(--weiss);
+    background-color: var(--dunkelblau);
+
+    transform: translate(-2px, -2px);
+
+    box-shadow: 6px 6px 0 var(--tuerkis);
+}
+
+.button:active {
+    transform: translate(3px, 3px);
+
+    box-shadow: 1px 1px 0 var(--dunkelblau);
+}
+
+.button:focus-visible {
+    outline: 4px solid var(--orange);
+    outline-offset: 4px;
+}
+
+.hauptbutton {
+    color: var(--weiss);
+    background-color: var(--dunkelblau);
+}
+
+.hauptbutton:hover {
+    color: var(--dunkelblau);
+    background-color: var(--creme);
+}
+
+.pinguinbutton {
+    color: var(--schrift);
+    background-color: var(--orange);
+
+    border-color: var(--schrift);
+
+    box-shadow: 4px 4px 0 var(--schrift);
+}
+
+.pinguinbutton:hover {
+    color: var(--weiss);
+    background-color: var(--orange-dunkel);
+
+    box-shadow: 6px 6px 0 var(--creme);
+}
+
+.button:disabled {
+    color: #6f767b;
+    background-color: #dfe3e5;
+
+    border-color: #8b949a;
+    box-shadow: none;
+
+    cursor: not-allowed;
+    transform: none;
+
+    opacity: 0.8;
+}
+
+.buttonsymbol {
+    font-size: 0.85rem;
+}
+
+
+/* --------------------------------------------------
+   Darstellung der Tastaturtasten
+-------------------------------------------------- */
+
+kbd {
+    display: inline-block;
+
+    min-width: 28px;
+    padding: 2px 7px;
+
+    color: inherit;
+    background-color: rgba(255, 255, 255, 0.23);
+
+    border: 1px solid currentColor;
+    border-radius: 5px;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size: 0.78rem;
+    text-align: center;
+}
+
+.nebenbutton kbd {
+    background-color: #eef5f8;
+}
+
+
+/* --------------------------------------------------
+   Bedienungshinweise innerhalb der Karten
+-------------------------------------------------- */
+
+.tastaturhinweis {
+    margin-top: 28px;
+    padding: 22px;
+
+    background-color: var(--creme-hell);
+
+    border-left: 5px solid var(--orange);
+    border-radius: 12px;
+}
+
+.tastaturhinweis h3 {
+    margin: 0 0 12px;
+
+    color: var(--dunkelblau);
+
+    font-size: 1.05rem;
+}
+
+.tastaturhinweis ul {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.tastaturhinweis li + li {
+    margin-top: 8px;
+}
+
+
+/* --------------------------------------------------
+   Dokumentationsbereich
+-------------------------------------------------- */
+
+.dokumentation {
+    margin-top: 34px;
+    padding: clamp(28px, 5vw, 55px);
+
+    background-color: var(--weiss);
+
+    border: 1px solid rgba(18, 59, 93, 0.12);
+    border-radius: 26px;
+
+    box-shadow: var(--schatten);
+}
+
+.abschnittskopf {
+    max-width: 750px;
+    margin-bottom: 32px;
+}
+
+.abschnittskopf h2 {
+    margin: 0 0 14px;
+
+    color: var(--dunkelblau);
+
+    font-size: clamp(2rem, 4vw, 3.1rem);
+}
+
+.abschnittskopf p:last-child {
+    margin-bottom: 0;
+}
+
+.dokumentationsraster {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.dokumentationskarte {
+    padding: 24px;
+
+    background-color: #f8fbfc;
+
+    border: 1px solid var(--rand);
+    border-radius: 17px;
+}
+
+.dokumentationskarte h3 {
+    margin: 0 0 15px;
+
+    color: var(--dunkelblau);
+
+    font-size: 1.18rem;
+}
+
+.dokumentationskarte p {
+    margin-top: 0;
+}
+
+.dokumentationskarte p:last-child {
+    margin-bottom: 0;
+}
+
+code {
+    padding: 2px 6px;
+
+    color: var(--dunkelblau);
+    background-color: var(--tuerkis-hell);
+
+    border-radius: 5px;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+}
+
+.quellenliste {
+    margin: 18px 0 0;
+    padding-left: 20px;
+}
+
+.quellenliste li + li {
+    margin-top: 8px;
+}
+
+.quellenliste a {
+    color: var(--dunkelblau);
+
+    font-weight: bold;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.quellenliste a:hover {
+    color: var(--orange-dunkel);
+}
+
+.quellenliste a:focus-visible {
+    outline: 4px solid var(--orange);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+
+/* --------------------------------------------------
+   Fußbereich
+-------------------------------------------------- */
+
+.seitenfuss {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px;
+
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 28px 0 40px;
+
+    color: var(--grau);
+
+    border-top: 1px solid var(--rand);
+
+    font-size: 0.9rem;
+}
+
+.seitenfuss p {
+    margin: 0;
+}
+
+
+/* --------------------------------------------------
+   Darstellung auf kleineren Bildschirmen
+-------------------------------------------------- */
+
+@media (max-width: 950px) {
+
+    .animationsbereich {
+        grid-template-columns: 1fr;
+    }
+
+    .dokumentationsraster {
+        grid-template-columns: 1fr;
+    }
+
+    .kartenkopf {
+        min-height: auto;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .seitenkopf {
+        padding:
+            55px
+            20px
+            85px;
+    }
+
+    main {
+        width: min(100% - 20px, 1180px);
+    }
+
+    .animationskarte {
+        padding: 24px 18px;
+        border-radius: 20px;
+    }
+
+    .bildbereich {
+        height: 350px;
+    }
+
+    #scheibe {
+        width: min(95%, 330px);
+    }
+
+    #pinguin {
+        max-height: 335px;
+    }
+
+    .scheibensteuerung {
+        grid-template-columns: 1fr;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .dokumentation {
+        padding: 26px 18px;
+        border-radius: 20px;
+    }
+
+    .seitenfuss {
+        flex-direction: column;
+    }
+
+}
+
+
+/* --------------------------------------------------
+   Reduzierte Bewegung in den Systemeinstellungen
+-------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+    }
+
+}

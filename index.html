@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Interaktive Einzelbildanimation einer maritimen Scheibe und eines hüpfenden Pinguins."
+    >
+
+    <title>Interaktiv animierte Scheibe</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sprunglink für die Bedienung mit der Tastatur -->
+    <a class="sprunglink" href="#hauptinhalt">
+        Direkt zum Inhalt
+    </a>
+
+
+    <!-- Kopfbereich der Webseite -->
+    <header class="seitenkopf">
+
+        <div class="kopfbereich">
+
+            <h1>Interaktiv animierte Scheibe</h1>
+
+            <p class="einleitung">
+                Zwei selbstständig steuerbare Animationen aus
+                nacheinander angezeigten Einzelbildern, umgesetzt
+                mit HTML, CSS und JavaScript.
+            </p>
+
+
+        </div>
+
+    </header>
+
+
+    <!-- Hauptinhalt -->
+    <main id="hauptinhalt">
+
+        <section
+            class="animationsbereich"
+            aria-label="Interaktive Animationen"
+        >
+
+            <!-- Karte für die Scheibenanimation -->
+            <article class="animationskarte scheibenkarte">
+
+                <div class="kartennummer" aria-hidden="true">
+                    01
+                </div>
+
+                <header class="kartenkopf">
+
+                    <p class="kartenkategorie">
+                        Hauptaufgabe
+                    </p>
+
+                    <h2>Maritime Scheibe</h2>
+
+                    <p>
+                        Die selbst gestaltete Kompassscheibe kann
+                        schrittweise nach links und rechts oder
+                        automatisch gedreht werden.
+                    </p>
+
+                </header>
+
+
+                <div class="bildbereich scheibenbereich">
+
+                    <img
+                        id="scheibe"
+                        src="bilder/scheibe/scheibe-00.png"
+                        alt="Selbst gestaltete maritime Scheibe mit einer Kompassrose"
+                    >
+
+                </div>
+
+
+                <p
+                    id="positionsanzeige"
+                    class="statusanzeige"
+                    aria-live="polite"
+                >
+                    Aktuelle Position: 0° · angehalten
+                </p>
+
+
+                <div
+                    class="steuerung scheibensteuerung"
+                    role="group"
+                    aria-label="Steuerung der Scheibe"
+                >
+
+                    <button
+                        id="linksButton"
+                        class="button nebenbutton"
+                        type="button"
+                        aria-label="Scheibe um einen Schritt nach links drehen"
+                    >
+                        <span aria-hidden="true">←</span>
+
+                        <span>
+                            Nach links
+                        </span>
+
+                        <kbd>L</kbd>
+                    </button>
+
+
+                    <button
+                        id="automatikButton"
+                        class="button hauptbutton"
+                        type="button"
+                        aria-pressed="false"
+                        aria-label="Automatische Drehung starten oder anhalten"
+                    >
+                        <span
+                            class="buttonsymbol"
+                            aria-hidden="true"
+                        >
+                            ▶
+                        </span>
+
+                        <span id="automatikBeschriftung">
+                            Automatik starten
+                        </span>
+
+                        <kbd>A</kbd>
+                    </button>
+
+
+                    <button
+                        id="rechtsButton"
+                        class="button nebenbutton"
+                        type="button"
+                        aria-label="Scheibe um einen Schritt nach rechts drehen"
+                    >
+                        <span>
+                            Nach rechts
+                        </span>
+
+                        <kbd>R</kbd>
+
+                        <span aria-hidden="true">→</span>
+                    </button>
+
+                </div>
+
+
+                <div class="tastaturhinweis">
+
+                    <h3>Bedienung</h3>
+
+                    <ul>
+                        <li>
+                            <kbd>L</kbd>
+                            dreht die Scheibe um 15° nach links.
+                        </li>
+
+                        <li>
+                            <kbd>R</kbd>
+                            dreht die Scheibe um 15° nach rechts.
+                        </li>
+
+                        <li>
+                            <kbd>A</kbd>
+                            startet oder stoppt die automatische
+                            Drehung.
+                        </li>
+                    </ul>
+
+                </div>
+
+            </article>
+
+
+            <!-- Karte für die Pinguinanimation -->
+            <article class="animationskarte pinguinkarte">
+
+                <div class="kartennummer" aria-hidden="true">
+                    02
+                </div>
+
+                <header class="kartenkopf">
+
+                    <p class="kartenkategorie">
+                        Erweiterung
+                    </p>
+
+                    <h2>Cassy hebt ab</h2>
+
+                    <p>
+                        Cassys Sprung entsteht ebenfalls durch den
+                        schnellen Austausch mehrerer Einzelbilder.
+                    </p>
+
+                </header>
+
+
+                <div class="bildbereich pinguinbereich">
+
+                    <img
+                        id="pinguin"
+                        src="bilder/pinguin/pinguin-00.png"
+                        alt="Pinguin Cassy steht vor ihrem Sprung"
+                    >
+
+                </div>
+
+
+                <p
+                    id="pinguinStatus"
+                    class="statusanzeige"
+                    aria-live="polite"
+                >
+                    Cassy wartet auf ihren Sprung.
+                </p>
+
+
+                <div
+                    class="steuerung pinguinsteuerung"
+                    role="group"
+                    aria-label="Steuerung der Pinguinanimation"
+                >
+
+                    <button
+                        id="pinguinButton"
+                        class="button pinguinbutton"
+                        type="button"
+                        aria-label="Cassys Sprunganimation starten"
+                    >
+                        <span aria-hidden="true">↑</span>
+
+                        <span>
+                            Cassy hüpfen lassen
+                        </span>
+
+                        <kbd>H</kbd>
+                    </button>
+
+                </div>
+
+
+                <div class="tastaturhinweis">
+
+                    <h3>Bedienung</h3>
+
+                    <ul>
+                        <li>
+                            <kbd>H</kbd>
+                            startet Cassys Sprunganimation.
+                        </li>
+
+                        <li>
+                            Alternativ kann die Animation über den
+                            Button gestartet werden.
+                        </li>
+
+                        <li>
+                            Während eines Sprungs kann keine zweite
+                            Animation gestartet werden.
+                        </li>
+                    </ul>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- Dokumentation -->
+        <section
+            class="dokumentation"
+            aria-labelledby="dokumentationTitel"
+        >
+
+            <div class="abschnittskopf">
+
+                <p class="aufgabenbezeichnung">
+                    Informationen zur Umsetzung
+                </p>
+
+                <h2 id="dokumentationTitel">
+                    Dokumentation
+                </h2>
+
+                <p>
+                    Hinweise zur technischen Umsetzung, Bedienung
+                    und Herkunft des verwendeten Bildmaterials.
+                </p>
+
+            </div>
+
+
+            <div class="dokumentationsraster">
+
+                <article class="dokumentationskarte">
+
+                    <h3>Technische Umsetzung</h3>
+
+                    <p>
+                        Die Webseite habe ich in Visual Studio Code
+                        mit HTML, CSS und JavaScript erstellt. HTML
+                        bildet den Aufbau der Seite, CSS übernimmt die
+                        Gestaltung und JavaScript steuert die beiden
+                        Animationen.
+                    </p>
+
+                    <p>
+                        Die Animationen kommen ohne Canvas und ohne
+                        WebGL aus. Stattdessen tauscht JavaScript die
+                        Bildquelle eines
+                        <code>&lt;img&gt;</code>-Elements aus.
+                    </p>
+
+                    <p>
+                        Die Scheibenanimation besteht aus 24 Bildern.
+                        Zwischen den einzelnen Positionen liegen
+                        jeweils 15 Grad. Cassys Sprung besteht aus
+                        acht nacheinander angezeigten Bildern.
+                    </p>
+
+                    <p>
+                        Die Funktionen wurden in Google Chrome über
+                        die Buttons und die Tastatur getestet. Dabei
+                        habe ich auch die Entwicklerkonsole auf
+                        Fehlermeldungen überprüft.
+                    </p>
+
+                    <p>
+                        Das fertige Projekt wird in einem
+                        GitHub-Repository gespeichert und mit GitHub
+                        Pages öffentlich bereitgestellt.
+                    </p>
+
+                </article>
+
+
+                <article class="dokumentationskarte">
+
+                    <h3>Bildmaterial</h3>
+
+                    <p>
+                        Die maritime Scheibe habe ich selbst in
+                        Inkscape aus verschiedenen geometrischen
+                        Formen gestaltet.
+                    </p>
+
+                    <p>
+                        Aus diesem Ausgangsmotiv habe ich 24
+                        Einzelbilder erstellt. Dafür wurde das Motiv
+                        für jedes neue Bild um weitere 15 Grad
+                        gedreht und als PNG-Datei exportiert.
+                    </p>
+
+                    <p>
+                        Die Bilder von Cassy wurden nach meinen
+                        Vorgaben mit Unterstützung eines
+                        KI-Bildgenerators erstellt. Anschließend habe
+                        ich die passenden Bilder ausgewählt und zu
+                        einer Animation zusammengestellt.
+                    </p>
+
+                    <p>
+                        Fremdes Bildmaterial aus dem Internet habe ich
+                        nicht verwendet.
+                    </p>
+
+                </article>
+
+
+                <article class="dokumentationskarte">
+
+                    <h3>Bedienung und Gebrauchstauglichkeit</h3>
+
+                    <p>
+                        Beide Animationen können über gut sichtbare
+                        Buttons oder mit der Tastatur gesteuert
+                        werden. Die Scheibe reagiert auf die Tasten
+                        <kbd>L</kbd>, <kbd>R</kbd> und
+                        <kbd>A</kbd>. Cassys Sprung wird mit
+                        <kbd>H</kbd> gestartet.
+                    </p>
+
+                    <p>
+                        Die Beschriftungen sollen direkt verständlich
+                        machen, welche Aktion ausgelöst wird.
+                        Statusanzeigen geben außerdem eine sichtbare
+                        Rückmeldung über die aktuelle Position und
+                        den Zustand der Animationen.
+                    </p>
+
+                    <p>
+                        Bei der Gestaltung habe ich auf deutliche
+                        Kontraste, ausreichend große Bedienelemente
+                        und gut erkennbare Fokusmarkierungen für die
+                        Tastaturbedienung geachtet.
+                    </p>
+
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Fußbereich -->
+    <footer class="seitenfuss">
+
+        <p>
+            EA 1 · Interaktiv animierte Scheibe
+        </p>
+
+        <p>
+            Erstellt von Cassandra Ludwig
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
