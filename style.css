@@ -788,3 +788,54 @@ code {
     }
 
 }
+
+
+/* --------------------------------------------------
+   PERSÖNLICHES BILD IM KOPFBEREICH
+-------------------------------------------------- */
+
+.kopfbereich {
+    min-height: 220px;
+    padding-right: 240px;
+}
+
+
+.profilbild {
+    position: absolute;
+    right: 35px;
+    bottom: -78px;
+
+    width: 174px;
+    height: auto;
+
+    filter: drop-shadow(
+        0 12px 12px rgba(0, 0, 0, 0.22)
+    );
+}
+
+
+/* Darstellung auf kleineren Bildschirmen */
+@media (max-width: 700px) {
+
+    .kopfbereich {
+        min-height: 0;
+        padding-right: 0;
+
+        text-align: center;
+    }
+
+    .kurzinformationen {
+        justify-content: center;
+    }
+
+    .profilbild {
+        position: static;
+
+        width: 125px;
+        margin: 25px auto -68px;
+
+        filter: drop-shadow(
+            0 8px 9px rgba(0, 0, 0, 0.2)
+        );
+    }
+}
