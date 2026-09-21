@@ -813,9 +813,12 @@ code {
 
     background-color: transparent;
 
-    filter: drop-shadow(
-        0 12px 12px rgba(0, 0, 0, 0.25)
-    );
+    filter:
+    drop-shadow(1px 0 0 #123b5d)
+    drop-shadow(-1px 0 0 #123b5d)
+    drop-shadow(0 1px 0 #123b5d)
+    drop-shadow(0 -1px 0 #123b5d)
+    drop-shadow(0 10px 10px rgba(0, 0, 0, 0.22));
 }
 
 
