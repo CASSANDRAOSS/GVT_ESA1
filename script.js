@@ -1,5 +1,5 @@
 "use strict";
-
+// START AUFGABE_1_SCHEIBENANIMATION_UND_PINGUIN_ERWEITERUNG
 
 // --------------------------------------------------
 // 1. ELEMENTE AUS DER HTML-SEITE AUSWÄHLEN
@@ -374,9 +374,13 @@ bilderVorladen(
 scheibenbildAnzeigen();
 pinguinbildAnzeigen(0);
 
+// END AUFGABE_1_SCHEIBENANIMATION_UND_PINGUIN_ERWEITERUNG
+
 // --------------------------------------------------
 // SLIDESHOW ZUM ENTSTEHUNGSPROZESS
 // --------------------------------------------------
+
+// START EIGENE_ERWEITERUNG_SLIDESHOW
 
 // Bilder und Texte der einzelnen Entwicklungsschritte
 const entwicklungsschritte = [
@@ -583,3 +587,5 @@ slideshow.addEventListener(
 // Slideshow vorbereiten
 bildpunkteErstellen();
 entwicklungsschrittAnzeigen();
+
+// END EIGENE_ERWEITERUNG_SLIDESHOW
